@@ -2,8 +2,8 @@ import Page from '../components/Page'
 
 export default function SellPage() {
   return (
-    <Page>
+    <div>
       <p>Hello!</p>
-    </Page>
+    </div>
   )
 }
