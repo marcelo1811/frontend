@@ -1,1 +1,0 @@
-{"ast":null,"code":"export default function IndexPage() {\n  return oi;\n}","map":{"version":3,"sources":["/app/pages/index.js"],"names":["IndexPage","oi"],"mappings":"AAAA,eAAe,SAASA,SAAT,GAAqB;AAClC,SAAQC,EAAR;AACD","sourcesContent":["export default function IndexPage() {\n  return (oi)\n}\n"]},"metadata":{},"sourceType":"module"}
