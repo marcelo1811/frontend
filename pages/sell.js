@@ -1,9 +1,10 @@
+import CreateProduct from '../components/CreateProduct'
 import Page from '../components/Page'
 
 export default function SellPage() {
   return (
     <div>
-      <p>Hello!</p>
+      <CreateProduct />
     </div>
   )
 }
