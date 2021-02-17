@@ -1,17 +1,34 @@
-import Router from 'next/router'
 import NProgress from 'nprogress'
 import Page from '../components/page'
+import Router from 'next/router'
 
 // TODO: swap with our own
 import '../components/styles/nprogress.css'
+import { ApolloProvider } from '@apollo/client'
+import withData from '../lib/withData'
 
 Router.events.on('routerChangeStart', () => { NProgress.start()})
 Router.events.on('routerChangeComplete', () => { NProgress.done()})
 Router.events.on('routerChangeError', () => { NProgress.done()})
 
 
-export default function MyApp({ Component, pageProps }) {
-  return <Page>
-    <Component {...pageProps} />
-  </Page>
+function MyApp({ Component, pageProps, apollo }) {
+  return (
+    <ApolloProvider client={apollo}>
+      <Page>
+        <Component {...pageProps} />
+      </Page>
+    </ApolloProvider>
+  )
 }
+
+MyApp.getInitialProps = async function({ Component, ctx }) {
+  let pageProps = {}
+  if (Component.getInitialProps) {
+    pageProps = await Component.getInitialProps(ctx)
+  }
+  pageProps.query = ctx.query
+  return pageProps
+}
+
+export default withData(MyApp) 
