@@ -61,7 +61,7 @@ export default function Page({ children }) {
 
 Page.propTypes = {
   cool: PropTypes.string,
-  children: PropTypes.oneOf([
+  children: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.node),
     PropTypes.node,
   ]),
