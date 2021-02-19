@@ -12,13 +12,23 @@ export default function Product({ product }) {
                 alt={product.name}
             />
             <Title>
-                <Link href={`/product/${product.id}`}>
+                <Link href={`/products/${product.id}`}>
                     {product.name}
                 </Link>
             </Title>
             <PriceTag>{formatMoney(product.price)}</PriceTag>
             <p>{product.description}</p>
             {/* TODO: add buttons do edit and delete items */}
+            <div className='buttonList'>
+                <Link href={{
+                    pathname: 'update',
+                    query: {
+                        id: product.id,
+                    },
+                }}>
+                    Edit
+                </Link>
+            </div>
         </ItemStyles>
     )
 }
