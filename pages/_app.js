@@ -1,16 +1,21 @@
-import NProgress from 'nprogress'
-import Page from '../components/page'
-import Router from 'next/router'
+import NProgress from 'nprogress';
+import Page from '../components/page';
+import Router from 'next/router';
 
 // TODO: swap with our own
-import '../components/styles/nprogress.css'
-import { ApolloProvider } from '@apollo/client'
-import withData from '../lib/withData'
+import '../components/styles/nprogress.css';
+import { ApolloProvider } from '@apollo/client';
+import withData from '../lib/withData';
 
-Router.events.on('routerChangeStart', () => { NProgress.start()})
-Router.events.on('routerChangeComplete', () => { NProgress.done()})
-Router.events.on('routerChangeError', () => { NProgress.done()})
-
+Router.events.on('routerChangeStart', () => {
+  NProgress.start();
+});
+Router.events.on('routerChangeComplete', () => {
+  NProgress.done();
+});
+Router.events.on('routerChangeError', () => {
+  NProgress.done();
+});
 
 function MyApp({ Component, pageProps, apollo }) {
   return (
@@ -19,16 +24,16 @@ function MyApp({ Component, pageProps, apollo }) {
         <Component {...pageProps} />
       </Page>
     </ApolloProvider>
-  )
+  );
 }
 
-MyApp.getInitialProps = async function({ Component, ctx }) {
-  let pageProps = {}
+MyApp.getInitialProps = async function ({ Component, ctx }) {
+  let pageProps = {};
   if (Component.getInitialProps) {
-    pageProps = await Component.getInitialProps(ctx)
+    pageProps = await Component.getInitialProps(ctx);
   }
-  pageProps.query = ctx.query
-  return pageProps
-}
+  pageProps.query = ctx.query;
+  return pageProps;
+};
 
-export default withData(MyApp) 
+export default withData(MyApp);
